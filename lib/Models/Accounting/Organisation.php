@@ -391,11 +391,14 @@ class Organisation implements ModelInterface, ArrayAccess
     const MODEL_CLASS_NON_GST_CASHBOOK = 'NON_GST_CASHBOOK';
     const MODEL_CLASS_ULTIMATE = 'ULTIMATE';
     const MODEL_CLASS_LITE = 'LITE';
+    const MODEL_CLASS_IGNITE = 'IGNITE';
+    const MODEL_CLASS_GROW = 'GROW';
+    const MODEL_CLASS_COMPREHENSIVE = 'COMPREHENSIVE';
     const EDITION_BUSINESS = 'BUSINESS';
     const EDITION_PARTNER = 'PARTNER';
-    
 
-    
+
+
     /**
      * Gets allowable values of the enum
      *
@@ -416,7 +419,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::VERSION_USONRAMP,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -440,7 +443,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::ORGANISATION_TYPE_TRUST,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -459,7 +462,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::SALES_TAX_BASIS_ACCRUALS,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -485,7 +488,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::SALES_TAX_PERIOD_NONE,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -509,7 +512,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::ORGANISATION_ENTITY_TYPE_TRUST,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -531,9 +534,12 @@ class Organisation implements ModelInterface, ArrayAccess
             self::MODEL_CLASS_NON_GST_CASHBOOK,
             self::MODEL_CLASS_ULTIMATE,
             self::MODEL_CLASS_LITE,
+            self::MODEL_CLASS_IGNITE,
+            self::MODEL_CLASS_GROW,
+            self::MODEL_CLASS_COMPREHENSIVE,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -546,7 +552,7 @@ class Organisation implements ModelInterface, ArrayAccess
             self::EDITION_PARTNER,
         ];
     }
-    
+
 
     /**
      * Associative array for storing property values
@@ -1269,7 +1275,7 @@ class Organisation implements ModelInterface, ArrayAccess
         return StringUtil::convertStringToDate($this->getPeriodLockDate());
       } else {
         throw new \Exception('can not convert null string to date');
-      } 
+      }
     }
 
     /**
@@ -1295,12 +1301,12 @@ class Organisation implements ModelInterface, ArrayAccess
      */
     public function setPeriodLockDateAsDate($period_lock_date)
     {
-      //CONVERT Date into MS DateFromat String 
+      //CONVERT Date into MS DateFromat String
       if (StringUtil::checkThisDate($period_lock_date->format('Y-m-d')) )
-      {        
+      {
         $timeInMillis = strtotime($period_lock_date->format('Y-m-d')." UTC") * 1000;
         $period_lock_date = "/Date(" . $timeInMillis. "+0000)/";
-      }  
+      }
       $this->container['period_lock_date'] = $period_lock_date;
       return $this;
     }
@@ -1322,7 +1328,7 @@ class Organisation implements ModelInterface, ArrayAccess
         return StringUtil::convertStringToDate($this->getEndOfYearLockDate());
       } else {
         throw new \Exception('can not convert null string to date');
-      } 
+      }
     }
 
     /**
@@ -1348,12 +1354,12 @@ class Organisation implements ModelInterface, ArrayAccess
      */
     public function setEndOfYearLockDateAsDate($end_of_year_lock_date)
     {
-      //CONVERT Date into MS DateFromat String 
+      //CONVERT Date into MS DateFromat String
       if (StringUtil::checkThisDate($end_of_year_lock_date->format('Y-m-d')) )
-      {        
+      {
         $timeInMillis = strtotime($end_of_year_lock_date->format('Y-m-d')." UTC") * 1000;
         $end_of_year_lock_date = "/Date(" . $timeInMillis. "+0000)/";
-      }  
+      }
       $this->container['end_of_year_lock_date'] = $end_of_year_lock_date;
       return $this;
     }
@@ -1375,7 +1381,7 @@ class Organisation implements ModelInterface, ArrayAccess
         return StringUtil::convertStringToDateTime($this->getCreatedDateUtc());
       } else {
         throw new \Exception('can not convert null string to date');
-      } 
+      }
     }
 
     /**
